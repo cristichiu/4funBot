@@ -19,8 +19,6 @@ client.voices = new Discord.Collection();
 
 //dataStore
 const profile = new DataStore("./LocalData/profile")
-const obZilei = new DataStore("./LocalData/obZilei")
-const money = new DataStore("./LocalData/money")
 
 //handler
 const filesCmd = fs.readdirSync("./commands/").filter(file => file.endsWith(".js"))
@@ -54,7 +52,7 @@ module.exports.allCmdFile = filesCmd
 const filesEvent = fs.readdirSync("./events/").filter(file => file.endsWith(".js"))
 for(const file of filesEvent) {
     const event = require(`./events/${file}`)
-    const option = { client, snipe, Discord, familySet, profile, messageDelaySet, obZilei, money }
+    const option = { client, snipe, Discord, familySet, profile, messageDelaySet }
     event.start(option)
     console.log(`eventActiv: ${event.name}`)
 }
