@@ -4,7 +4,7 @@ const { prefix } = require("../settings.json");
 module.exports = {
     name: "MessageCreateGeneral",
     async start(option) {
-        const { client, snipe, Discord, profile, money } = option
+        const { client, snipe, Discord, profile } = option
         client.on('messageCreate', async message => {
             if(message.author.bot) return;
             if(message.content.includes(`<@${client.user.id}>`)) message.channel.send(`Prefixul meu este \`${prefix}\`\nÎncearcă \`${prefix} help\``)
@@ -28,7 +28,7 @@ module.exports = {
                 if(message.author.id ==="530059275754799116") permValid = true;
             } else { permValid = true }
             if(!permValid) return message.channel.send("Nu ai permisiunea de a folosi aceasta comanda!")
-            const option = { client, Discord, args, snipe, message, profile, money }
+            const option = { client, Discord, args, snipe, message, profile }
             cmdRun.execute(option)
         })
     }
